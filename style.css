@@ -1,0 +1,347 @@
+@font-face {
+    font-family: 'Intervogue';
+    src: url('data/intervogue-soft-medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  :root {
+    --cream: #f0ece4;
+    --dark: #0e0e0e;
+    --accent: #78FFD6;
+    --mid: #5a5248;
+    --white: #faf9f7;
+  }
+  
+  html, body {
+    width: 100%; height: 100%;
+    background: var(--dark);
+    font-family: 'Intervogue', sans-serif;
+    overflow: hidden;
+  }
+  
+  .deck {
+    width: 100vw; height: 100vh;
+    position: relative;
+  }
+  
+  /* ─── SLIDE ─────────────────────────────────────── */
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s ease;
+  }
+  .slide.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+  
+  /* ─── BG IMAGE ───────────────────────────────────── */
+  .slide-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+  }
+  .slide-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(8,8,8,0.48);
+  }
+  
+  /* ─── CONTENT ────────────────────────────────────── */
+  .slide-content {
+    position: relative;
+    z-index: 2;
+    max-width: 860px;
+    width: 90%;
+    padding: 0 20px;
+  }
+  
+  .slide-content.left   { margin-right: auto; margin-left: 6vw; }
+  .slide-content.right  { margin-left: auto;  margin-right: 6vw; }
+  .slide-content.center { text-align: center; margin: auto; }
+  
+  /* ─── TYPOGRAPHY ─────────────────────────────────── */
+  .label {
+    font-family: 'Intervogue', sans-serif;
+    font-size: clamp(14px, 2vw, 24px);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.4rem;
+    opacity: 0.85;
+  }
+  
+  h1, h2 {
+    font-family: 'Intervogue', sans-serif;
+    font-size: clamp(18px, 2.2vw, 24px);
+    font-weight: 500;
+    font-style: normal;
+    color: var(--white);
+    line-height: 1.3;
+    margin-bottom: 1.2rem;
+  }
+  h1 em, h2 em { color: var(--accent); font-style: normal; }
+  
+  p {
+    font-family: 'Intervogue', sans-serif;
+    font-size: 1.52rem;
+    color: var(--cream);
+    line-height: 1.75;
+    opacity: 0.88;
+    max-width: 620px;
+  }
+  p + p { margin-top: 0.9rem; }
+  
+  .divider {
+    width: 48px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.6;
+    margin: 1.4rem 0;
+  }
+  
+  /* ─── BLOCKQUOTE ─────────────────────────────────── */
+  blockquote {
+    border-left: 1px solid var(--accent);
+    padding-left: 1.6rem;
+    margin: 1.4rem 0;
+  }
+  blockquote p {
+    font-family: 'Intervogue', sans-serif;
+    font-style: normal;
+    font-size: 1.2rem;
+    opacity: 0.95;
+  }
+  blockquote cite {
+    display: block;
+    font-family: 'Intervogue', sans-serif;
+    font-style: normal;
+    font-size: clamp(0.7rem, 1vw, 0.9rem);
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-top: 0.8rem;
+  }
+  
+  /* ─── GRID: TRIO ─────────────────────────────────── */
+  .trio {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  .trio-item h3 {
+    font-family: 'Intervogue', sans-serif;
+    font-style: normal;
+    font-size: clamp(0.7rem, 1vw, 0.9rem);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.7rem;
+  }
+ 
+  .trio-item p,
+.two-col p,
+.trio-epi p {
+  font-size: 1.27rem;
+  max-width: none;
+}
+  /* ─── GRID: TWO-COL ──────────────────────────────── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 1.8rem;
+    align-items: start;
+  }
+  .two-col p { font-size: 1.3rem; max-width: none; }
+  
+  /* ─── GRID: GENERIC TWO ──────────────────────────── */
+  .grid-two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  
+  /* ─── GRID: EPISTEMOLOGÍA ────────────────────────── */
+  .trio-epi {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    max-width: 800px;
+    margin: auto;
+    text-align: left;
+  }
+  
+  .col-label {
+    font-family: 'Intervogue', sans-serif;
+    font-style: normal;
+    font-size: clamp(0.7rem, 1vw, 0.9rem);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    opacity: 0.7;
+    margin-bottom: 0.6rem;
+  }
+  
+  /* ─── TAGS ───────────────────────────────────────── */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.4rem;
+  }
+  .tag {
+    font-family: 'Intervogue', sans-serif;
+    font-style: normal;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid rgba(200,184,154,0.4);
+    color: var(--accent);
+    padding: 0.3rem 0.7rem;
+    border-radius: 1px;
+  }
+  
+  /* ─── IMG PLACEHOLDER ────────────────────────────── */
+  .img-placeholder {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border: 1px solid rgba(200,184,154,0.0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.6rem;
+  }
+  .img-placeholder span {
+    font-family: 'Intervogue', sans-serif;
+    font-style: normal;
+    font-size: 0.85rem;
+    color: rgba(200,184,154,0.3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  
+  /* ─── UI: SLIDE NUMBER ───────────────────────────── */
+  .slide-num {
+    position: fixed;
+    top: 2rem;
+    right: 2.5rem;
+    font-family: 'Intervogue', sans-serif;
+    font-style: normal;
+    font-size: 0.9rem;
+    color: rgba(200,184,154,0.3);
+    letter-spacing: 0.1em;
+    z-index: 100;
+  }
+  
+  /* ─── UI: NAV DOTS ───────────────────────────────── */
+  .nav {
+    position: fixed;
+    bottom: 1.8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 100;
+  }
+  .nav-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: rgba(200,184,154,0.3);
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .nav-dot.active { background: var(--accent); }
+  
+  /* ─── UI: ARROWS ─────────────────────────────────── */
+  .arrow {
+    position: fixed;
+    bottom: 1.6rem;
+    font-family: 'Intervogue', sans-serif;
+    font-style: normal;
+    font-size: 1rem;
+    color: rgba(200,184,154,0.35);
+    cursor: pointer;
+    z-index: 100;
+    transition: color 0.3s;
+    user-select: none;
+    letter-spacing: 0.05em;
+  }
+  .arrow:hover { color: var(--accent); }
+  .arrow.prev { left: 33px; }
+  .arrow.next { right: 33px; }
+  
+  /* ─── RESPONSIVE ─────────────────────────────────── */
+  @media (max-width: 768px) {
+    .slide-content.left {
+      margin-left: 5vw !important;
+      margin-right: 5vw !important;
+      width: 90%;
+    }
+  
+    .grid-two,
+    .two-col,
+    .trio,
+    .trio-epi {
+      grid-template-columns: 1fr;
+      gap: 1.4rem;
+    }
+  
+    .hide-mobile { display: none !important; }
+  
+    .label { font-size: 12px; }
+  
+    h1, h2 { font-size: clamp(16px, 4vw, 22px); }
+  
+    p { font-size: clamp(0.9rem, 3.8vw, 1.1rem); }
+  
+    blockquote p { font-size: clamp(0.9rem, 3.8vw, 1.1rem); }
+  
+    .trio-epi { max-width: 100%; }
+  
+    .arrow.prev { left: 16px; }
+    .arrow.next { right: 16px; }
+  
+    .slide-num { top: 1rem; right: 1rem; font-size: 0.75rem; }
+  }
+  
+  @media (max-width: 480px) {
+    .slide-content { padding: 0 12px; }
+    h1, h2 { font-size: 16px; }
+    p { font-size: 0.85rem; line-height: 1.6; }
+    .label { font-size: 10px; letter-spacing: 0.12em; }
+    blockquote { padding-left: 1rem; }
+  }
+  
+  /* ─── SLIDE BACKGROUNDS ──────────────────────────── */
+  #s1 .slide-bg { background-image: url('img/yecto.png'); }
+  #s2 .slide-bg { background-image: url('img/entreniebla-1.png'); }
+  #s3 .slide-bg { background-image: url('img/csengcto2.jpg'); }
+  #s4 .slide-bg { background-image: url('img/yuma.png'); }
+  #s4 .slide-content { margin-left: auto; margin-right: auto; }
+  #s5 .slide-bg { background-image: url('img/onfcopoe-1.png'); }
+  #s6 .slide-bg {
+    background-image: url('img/entreniebla-2.png');
+    background-position: center 30%;
+  }
+  #s6 .slide-content { margin-left: 150px !important; margin-right: auto; }
+  #s7 .slide-bg { background-image: url('img/entreniebla-net1.png'); }
+  #s7 .slide-content { margin-left: auto; margin-right: auto; }
+  #s8 .slide-bg { background-image: url('img/afueradentro.jpg'); }
+  #s9 .slide-bg { background-image: url('img/e_copy.png'); }
+  
+  @media (max-width: 768px) {
+    #s6 .slide-content { margin-left: 5vw !important; }
+  }
