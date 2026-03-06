@@ -1,1 +1,0 @@
-# poeticas-generativas.github.io
